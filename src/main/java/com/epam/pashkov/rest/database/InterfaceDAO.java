@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface InterfaceDAO {
     public List<CountryData> getAllCountries();
+    public CountryData getCountry(String country);
     public int addCountry(CountryData countryData);
     public int updateCountryPopulation(String country, long population);
     public int removeCountry(String country);

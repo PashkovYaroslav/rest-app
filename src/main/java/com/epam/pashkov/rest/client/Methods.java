@@ -36,6 +36,15 @@ public class Methods {
         return countryDatas;
     }
 
+    public CountryData getByCountry(String country) {
+        client = Client.create();
+        String getURL = baseUrl + resourceBundle.getString("path.get") + "/" + country;
+        webResource = client.resource(getURL);
+        String countryData = webResource.accept(MediaType.APPLICATION_JSON).get(String.class);
+        Gson gson = new Gson();
+        return gson.fromJson(countryData, CountryData.class);
+    }
+
     public ClientResponse post(CountryData newCountry) {
         client = Client.create();
         String postURL = baseUrl + resourceBundle.getString("path.post");

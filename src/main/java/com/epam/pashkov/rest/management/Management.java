@@ -17,6 +17,10 @@ public class Management {
         return countriesDAO.getAllCountries();
     }
 
+    public static CountryData getCountry(String country) {
+        return countriesDAO.getCountry(country);
+    }
+
     public static void createCountry(CountryData countryData) {
         countriesDAO.addCountry(countryData);
     }

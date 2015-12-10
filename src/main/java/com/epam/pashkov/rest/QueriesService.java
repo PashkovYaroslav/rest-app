@@ -20,10 +20,21 @@ public class QueriesService {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllMessages() {
+    public Response getAllCountries() {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         String json = gson.toJson(Management.getAllCountries());
+        return Response.status(200).entity(json).build();
+    }
+
+    @GET
+    @Path("/get/{country}")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCountry(@PathParam("country") String country) {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        String json = gson.toJson(Management.getCountry(country));
         return Response.status(200).entity(json).build();
     }
 
@@ -37,10 +48,10 @@ public class QueriesService {
     }
 
     @DELETE
-    @Path("/delete/{id}")
+    @Path("/delete/{country}")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteCountry(@PathParam("id") String country) {
+    public Response deleteCountry(@PathParam("country") String country) {
         return Response.status(200).entity(Management.removeCountry(country)).build();
     }
 

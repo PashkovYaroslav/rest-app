@@ -41,6 +41,34 @@ public class CountriesDAO implements InterfaceDAO {
         return countryDataList;
     }
 
+    public CountryData getCountry(String country) {
+        CountryData countryData = null;
+        Connection connection = null;
+
+        try {
+            connection = ConnectorDB.getConnection();
+            ResultSet rs;
+            Statement statement = connection.createStatement();
+            rs = statement.executeQuery(String.format("select * from Countries where Country='%s'", country));
+            while (rs.next()) {
+                countryData = new CountryData(rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
+                break;
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return countryData;
+    }
+
     public int addCountry(CountryData countryData) {
         int result = 0;
         Connection connection = null;

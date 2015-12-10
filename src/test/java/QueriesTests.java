@@ -30,6 +30,13 @@ public class QueriesTests {
     }
 
     @Test
+    public void checkGetByCountry() {
+        Methods methods = new Methods();
+        CountryData countryData = methods.getByCountry(country);
+        Assert.assertTrue(countryData.getCapital().equals(capital), "Country is not found");
+    }
+
+    @Test
     public void checkPost() {
         Methods methods = new Methods();
         CountryData countryData = new CountryData(country, capital, population, currency);
