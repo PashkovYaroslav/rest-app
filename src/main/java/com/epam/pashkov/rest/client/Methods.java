@@ -44,7 +44,7 @@ public class Methods {
         return response;
     }
 
-    public ClientResponse put(String country, String population) {
+    public ClientResponse put(String country, long population) {
         client = Client.create();
         String putUrl = baseUrl + resourceBundle.getString("path.put");
         webResource = client.resource(putUrl);

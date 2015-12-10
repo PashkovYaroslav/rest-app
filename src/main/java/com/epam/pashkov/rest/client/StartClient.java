@@ -22,7 +22,7 @@ public class StartClient {
         System.out.println("POST request status: " + clientResponse.getStatus());
 
         //PUT
-        clientResponse = methods.put("Poland", "1");
+        clientResponse = methods.put("Poland", 1);
         System.out.println("PUT request status: " + clientResponse.getStatus());
 
         //DELETE
